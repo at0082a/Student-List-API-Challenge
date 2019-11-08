@@ -29,20 +29,19 @@ export default class Card extends React.Component {
  
   render () {
     let { firstName, lastName, email, company, skill } = this.state;
-    let newGrades = this.state.grades.map(e => parseInt(e))
+    let newGrades = this.state.grades.map(e => parseInt(e));
     let sum = newGrades.reduce((a, b) => a + b, 0);
-    let average = sum / newGrades.length
-    console.log(average);
+    let average = sum / newGrades.length;
 
     return (
-      <div className= "body">
+        <div>
         <div className='card'>
           <img className="student-pic"
           src={this.state.image}
           alt="new"
           />
+          <h1> {firstName} {lastName} </h1>
           <div className= "student-info">
-            <h1> {firstName} {lastName} </h1>
             <p> Email: {email} </p>
             <p> Skill: {skill} </p>
             <p> Company: {company} </p>
