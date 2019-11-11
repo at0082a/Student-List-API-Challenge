@@ -20,7 +20,7 @@ export default class Dashboard extends React.Component {
   }
   
   getData () {  
-    fetch()
+    fetch("https://www.hatchways.io/api/assessment/students")
         .then(response => response.json())
         .then(students => {
           this.setState({
@@ -38,7 +38,7 @@ export default class Dashboard extends React.Component {
   filterData(event) {
     let partial = this.state.name;
     event.preventDefault();
-    fetch()
+    fetch("https://www.hatchways.io/api/assessment/students")
         .then(response => response.json())
         .then(students => {
 

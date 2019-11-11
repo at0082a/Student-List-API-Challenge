@@ -11,8 +11,10 @@ export default class Card extends React.Component {
       average: 0,
       skill: '',
       image: '',
-      grades: []
+      grades: [],
+      showGrades: false
     };
+    this.showStudentGrades = this.showStudentGrades.bind(this);
   }
 
   componentDidMount() {
@@ -21,10 +23,14 @@ export default class Card extends React.Component {
     const email = this.props.email;
     const company = this.props.company;
     const grades = this.props.grades;
-    const skill = this.props.skill
+    const skill = this.props.skill;
     const image = this.props.pic;
     this.setState({firstName, lastName, email, company, image, grades, skill});
-    // convertToNumber(grades);
+  }
+
+  showStudentGrades() {
+    this.setState({showGrades: !this.state.showGrades});
+    return ( <div> {this.props.grades} </div> )
   }
  
   render () {
@@ -41,6 +47,7 @@ export default class Card extends React.Component {
           alt="new"
           />
           <h1> {firstName} {lastName} </h1>
+          <button className="expand-button" onClick={this.showStudentGrades}> + </button>
           <div className= "student-info">
             <p> Email: {email} </p>
             <p> Skill: {skill} </p>

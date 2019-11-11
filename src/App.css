@@ -21,6 +21,11 @@
   display: inline-block;
 }
 
+.expand-button {
+  font-size: 2em;
+  float: right; 
+}
+
 .card {
   border: 0.3px solid black;
   width: 50%;
