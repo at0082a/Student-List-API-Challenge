@@ -56,9 +56,9 @@ export default class Dashboard extends React.Component {
 
   render () {
     let students = this.state.students;
-    let filteredList = this.state.filteredList
+    let filteredList = this.state.filteredList;
     console.log(this.state.filteredList);
-    // console.log(this.state.name);
+    console.log(this.state.name);
     if (filteredList.length === 0) {
       return (  
         <div className="container">
@@ -67,6 +67,7 @@ export default class Dashboard extends React.Component {
             onChange={this.handleChange} 
             value={this.state.value} 
           />
+          <p>fdhhdhdshdsbsdhdshdshds</p>
           <button type="submit" onClick={this.filterData}>Submit</button>
           <div className="student-container">
             {students.map(student => <Card key={student.id} firstName={student.firstName} lastName={student.lastName} company={student.company} email={student.email} pic={student.pic} grades={student.grades} skill={student.skill}/>)}

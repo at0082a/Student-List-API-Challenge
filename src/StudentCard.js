@@ -30,7 +30,11 @@ export default class Card extends React.Component {
 
   showStudentGrades() {
     this.setState({showGrades: !this.state.showGrades});
-    return ( <div> {this.props.grades} </div> )
+    console.log(this.state.showGrades);
+    return ( this.props.grades.map((grade) => 
+      <li> {grade} </li>
+      )
+    )
   }
  
   render () {
@@ -38,6 +42,7 @@ export default class Card extends React.Component {
     let newGrades = this.state.grades.map(e => parseInt(e));
     let sum = newGrades.reduce((a, b) => a + b, 0);
     let average = sum / newGrades.length;
+    console.log(this.state.grades);
 
     return (
         <div>
@@ -53,6 +58,12 @@ export default class Card extends React.Component {
             <p> Skill: {skill} </p>
             <p> Company: {company} </p>
             <p> Average: {average} </p>
+          { this.state.showGrades ?
+          <div className="grades">
+              {this.state.grades.map((grade, i) => <ul key={i} > {i} : {grade} </ul>)}
+          </div>
+          : null
+          }
           </div>
         </div>
       </div>
