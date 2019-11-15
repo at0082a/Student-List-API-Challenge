@@ -12,9 +12,13 @@ export default class Card extends React.Component {
       skill: '',
       image: '',
       grades: [],
-      showGrades: false
+      tags: [],
+      showGrades: false,
+      tag: ''
     };
     this.showStudentGrades = this.showStudentGrades.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.addTag = this.addTag.bind(this);
   }
 
   componentDidMount() {
@@ -31,10 +35,23 @@ export default class Card extends React.Component {
   showStudentGrades() {
     this.setState({showGrades: !this.state.showGrades});
     console.log(this.state.showGrades);
-    return ( this.props.grades.map((grade) => 
-      <li> {grade} </li>
-      )
-    )
+    // return ( this.props.grades.map((grade) => 
+    //   <li> {grade} </li>
+    //   )
+    // )
+  }
+
+
+  handleChange(event) {
+    this.setState({tag: event.target.value});
+    console.log(this.state.tag);
+  }
+
+  addTag(event) {
+    let tag = this.state.tag;
+    this.setState({tags: this.state.tags.concat(tag)});
+    event.preventDefault(); 
+    console.log('these are the tagssss', this.state.tags);
   }
  
   render () {
@@ -58,13 +75,22 @@ export default class Card extends React.Component {
             <p> Skill: {skill} </p>
             <p> Company: {company} </p>
             <p> Average: {average} </p>
-          { this.state.showGrades ?
-          <div className="grades">
-              {this.state.grades.map((grade, i) => <ul key={i} > {i} : {grade} </ul>)}
           </div>
-          : null
-          }
-          </div>
+            { this.state.showGrades ?
+            <div className="test-scores">
+              {this.state.grades.map((grade, i) => <ul key={i} > Test {i + 1} : {grade} </ul>)}
+              <form onSubmit={ this.addTag }>
+                  { this.state.tags.length > 0 ?
+                  <div className="row">
+                    {this.state.tags.map((tag, i) => <p key={i}> { tag } </p> )}
+                  </div>
+                    :null
+                  }
+                  <input type='text' placeholder='Add Tags' value={this.state.tag} onChange={this.handleChange}></input>
+              </form>
+            </div>
+              : null
+            }  
         </div>
       </div>
     );

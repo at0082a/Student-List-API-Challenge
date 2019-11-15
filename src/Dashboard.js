@@ -67,7 +67,6 @@ export default class Dashboard extends React.Component {
             onChange={this.handleChange} 
             value={this.state.value} 
           />
-          <p>fdhhdhdshdsbsdhdshdshds</p>
           <button type="submit" onClick={this.filterData}>Submit</button>
           <div className="student-container">
             {students.map(student => <Card key={student.id} firstName={student.firstName} lastName={student.lastName} company={student.company} email={student.email} pic={student.pic} grades={student.grades} skill={student.skill}/>)}
